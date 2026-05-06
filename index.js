@@ -11,7 +11,7 @@ const path=require("path")
 
 app.set("view engine","ejs")
 app.set("views",path.join(__dirname,"views"))
-app.set(express.static(path.join(__dirname,"public")))
+app.use(express.static(path.join(__dirname,"public")))
 
 let posts=[
     {
@@ -25,7 +25,7 @@ let posts=[
 ]
 
 app.get("/post",(req,res)=>{
-    res.render("index.ejs")
+    res.render("index.ejs",{posts})
 })
 
 
