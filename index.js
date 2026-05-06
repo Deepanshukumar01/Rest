@@ -1,6 +1,8 @@
 // put = entire data change
 // patch= partical data change
 
+// response.redirect(url)
+
 const express = require("express")
 const app=express()
 const port=3000
@@ -33,7 +35,7 @@ app.get("/post/new",(req,res)=>{
 app.post("/posts",(req,res)=>{
     let {username,work}=req.body
     posts.push({username,work})
-    res.send("data is received")
+    res.redirect("/post")
 })
 
 
