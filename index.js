@@ -27,6 +27,9 @@ let posts=[
 app.get("/post",(req,res)=>{
     res.render("index.ejs",{posts})
 })
+app.get("/post/new",(req,res)=>{
+    res.render("new.ejs")
+})
 
 
 app.listen(port,()=>{
