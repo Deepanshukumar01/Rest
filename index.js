@@ -30,6 +30,11 @@ app.get("/post",(req,res)=>{
 app.get("/post/new",(req,res)=>{
     res.render("new.ejs")
 })
+app.post("/posts",(req,res)=>{
+    let {username,work}=req.body
+    posts.push({username,work})
+    res.send("data is received")
+})
 
 
 app.listen(port,()=>{
