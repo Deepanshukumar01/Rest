@@ -13,9 +13,21 @@ app.set("view engine","ejs")
 app.set("views",path.join(__dirname,"views"))
 app.set(express.static(path.join(__dirname,"public")))
 
-app.get("/a",(req,res)=>{
-    res.send("server working well")
+let posts=[
+    {
+        username:"google",
+        work:"you can search"
+    },
+    {
+        username:"youtube",
+        work:"you can watch movies"
+    }
+]
+
+app.get("/post",(req,res)=>{
+    res.render("index.ejs")
 })
+
 
 app.listen(port,()=>{
     console.log(`${port} is working `)
