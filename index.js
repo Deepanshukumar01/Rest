@@ -49,6 +49,15 @@ app.get("/post/:id",(req,res)=>{
     let post=posts.find((p)=>id===p.id)
     res.render("show.ejs",{post})
 })
+app.patch("/post/:id",(req,res)=>{
+    let {id}=req.params
+    let newwork=req.body.work
+
+     let post=posts.find((p)=>id===p.id)
+     post.work=newwork
+    console.log(post)
+    res.send("patch request is working")
+})
 
 
 app.listen(port,()=>{
