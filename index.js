@@ -12,9 +12,12 @@ const app=express()
 const port=3000
 const path=require("path")
 const { v4:uuidv4 }=require('uuid')
+const methodOverride = require("method-override")
+
 
 
 app.use(express.urlencoded({extended:true}))
+app.use(methodOverride("_method"))
 
 
 app.set("view engine","ejs")
@@ -57,8 +60,10 @@ app.patch("/post/:id",(req,res)=>{
 
      let post=posts.find((p)=>id===p.id)
      post.work=newwork
-    console.log(post)
-    res.send("patch request is working")
+     console.log(post)
+   
+    res.redirect("/post")
+
 })
 app.get("/post/:id/edit",(req,res)=>{
     let {id}=req.params

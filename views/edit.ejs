@@ -12,8 +12,9 @@
     <h1>your website</h1>
     <h4>id:<%=post.id%></h4>
     <h4>website:<%=post.username%></h4>
-    <form>
-        <textarea name="username"><%=post.work%></textarea>
+    <form method="post" action="/post/<%=post.id%>?_method=patch"><!-- ye hai post method patch mei change ho gya -->
+        <!--  -->
+        <textarea name="work"><%=post.work%></textarea>
         <button>submit</button>
     </form>
     </div>
