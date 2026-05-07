@@ -4,6 +4,8 @@
 // response.redirect(url)
 // for id assign use npm i uuid package 
 
+// hm direct html se patch ya delete nhi use kr sakte iske liye use methode override
+
 
 const express = require("express")
 const app=express()
@@ -57,6 +59,11 @@ app.patch("/post/:id",(req,res)=>{
      post.work=newwork
     console.log(post)
     res.send("patch request is working")
+})
+app.get("/post/:id/edit",(req,res)=>{
+    let {id}=req.params
+    let post=posts.find((p)=>id===p.id)
+    res.render("edit.ejs",{post})
 })
 
 
