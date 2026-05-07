@@ -3,6 +3,7 @@
 
 // response.redirect(url)
 
+
 const express = require("express")
 const app=express()
 const port=3000
@@ -36,7 +37,7 @@ app.get("/post/new",(req,res)=>{
 })
 app.post("/posts",(req,res)=>{
     let {username,work,id}=req.body
-    posts.push({username,work,id})
+    posts.push({username,work})
     res.redirect("/post")
 })
 app.get("/post/:id",(req,res)=>{
