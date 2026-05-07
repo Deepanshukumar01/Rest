@@ -17,10 +17,12 @@ app.use(express.static(path.join(__dirname,"public")))
 
 let posts=[
     {
+        id:"aa",
         username:"google",
         work:"you can search"
     },
     {
+        id:"bb",
         username:"youtube",
         work:"you can watch movies"
     }
@@ -33,9 +35,14 @@ app.get("/post/new",(req,res)=>{
     res.render("new.ejs")
 })
 app.post("/posts",(req,res)=>{
-    let {username,work}=req.body
-    posts.push({username,work})
+    let {username,work,id}=req.body
+    posts.push({username,work,id})
     res.redirect("/post")
+})
+app.get("/post/:id",(req,res)=>{
+    let {id}=req.params
+    let post=posts.find((p)=>id===p.id)
+    res.render("show.ejs",{post})
 })
 
 
