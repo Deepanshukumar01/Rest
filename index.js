@@ -11,13 +11,13 @@ const express = require("express")
 const app=express()
 const port=3000
 const path=require("path")
-const { v4:uuidv4 }=require('uuid')
-const methodOverride = require("method-override")
+const { v4:uuidv4 }=require('uuid')// random id wala
+const methodOverride = require("method-override") //patch ko override
 
 
 
 app.use(express.urlencoded({extended:true}))
-app.use(methodOverride("_method"))
+app.use(methodOverride("_method"))//patch
 
 
 app.set("view engine","ejs")
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname,"public")))
 
 let posts=[
     {
-        id:uuidv4(),
+        id:uuidv4(),//id
         username:"google",
         work:"you can search"
     },
