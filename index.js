@@ -2,15 +2,18 @@
 // patch= partical data change
 
 // response.redirect(url)
+// for id assign use npm i uuid package 
 
 
 const express = require("express")
 const app=express()
 const port=3000
+const path=require("path")
+const { v4:uuidv4 }=require('uuid')
+
 
 app.use(express.urlencoded({extended:true}))
 
-const path=require("path")
 
 app.set("view engine","ejs")
 app.set("views",path.join(__dirname,"views"))
@@ -18,12 +21,12 @@ app.use(express.static(path.join(__dirname,"public")))
 
 let posts=[
     {
-        id:"aa",
+        id:uuidv4(),
         username:"google",
         work:"you can search"
     },
     {
-        id:"bb",
+        id:uuidv4(),
         username:"youtube",
         work:"you can watch movies"
     }
@@ -35,9 +38,10 @@ app.get("/post",(req,res)=>{
 app.get("/post/new",(req,res)=>{
     res.render("new.ejs")
 })
-app.post("/posts",(req,res)=>{
-    let {username,work,id}=req.body
-    posts.push({username,work})
+app.post("/post",(req,res)=>{
+    let {username,work}=req.body
+    let id=uuidv4()
+    posts.push({username,work,id})
     res.redirect("/post")
 })
 app.get("/post/:id",(req,res)=>{
