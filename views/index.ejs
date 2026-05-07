@@ -14,13 +14,15 @@
         <div class="A">
         <h3>@<%=post.username%></h3>
         <h3><%=post.work%></h3>
-        <a href="http://localhost:3000/post/<%=post.id%>">Show in details</a>
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <a href="http://localhost:3000/post/<%=post.id%>/edit">edit</a>
+        <a href="http://localhost:3000/post/<%=post.id%>">Show in details</a> &nbsp; &nbsp;
+    
+        <a href="http://localhost:3000/post/<%=post.id%>/edit">edit</a> &nbsp; &nbsp;
+    
+        <form method="post" action="/post/<%=post.id%>?_method=delete">
+        <br><button>delete post</button>
+        </form>
         </div>
-        <br>
+        
     <%}
      %>
      <br>

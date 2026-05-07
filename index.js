@@ -70,6 +70,12 @@ app.get("/post/:id/edit",(req,res)=>{
     let post=posts.find((p)=>id===p.id)
     res.render("edit.ejs",{post})
 })
+app.delete("/post/:id",(req,res)=>{
+    let {id}=req.params
+    posts=posts.filter((p)=>id!==p.id)
+    res.redirect("/post")
+    
+})
 
 
 app.listen(port,()=>{
